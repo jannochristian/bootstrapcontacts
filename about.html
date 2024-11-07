@@ -1,186 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="logo.png" type="image/x-icon" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chua's Portfolio Website</title>
-
-  <!-- Bootstrap CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-  />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Calibri', sans-serif;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 100px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      background-color: #333;
-    }
-
-    .logo {
-      font-size: 2em;
-      color: white;
-    }
-
-    .logo span {
-      color: aqua;
-    }
-
-    .navigation a {
-      font-size: 1.1em;
-      color: white;
-      text-decoration: none;
-      margin-right: 40px;
-      font-weight: 500;
-      transition: .3s;
-    }
-
-    .navigation a:hover {
-      color: aqua;
-    }
-
-    .btn-talk {
-      color: white;
-      text-decoration: none;
-      padding: 8px 20px;
-      background: aqua;
-      border-radius: 10px;
-      font-weight: 500;
-      border: 2px solid aqua;
-      transition: .3s;
-    }
-
-    .btn-talk:hover {
-      color: aqua;
-      background: transparent;
-    }
-
-    .home {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: url('background.jpg') no-repeat center center/cover;
-      display: flex;
-      align-items: center;
-      padding: 30px 100px;
-      color: white;
-    }
-
-    .content h2 {
-      font-size: 3em;
-    }
-
-    .content h2 span {
-      color: aqua;
-    }
-
-    .content h4 {
-      font-size: 1.5em;
-    }
-
-    .content p {
-      padding: 10px 0 20px 0;
-    }
-
-    .btn-group a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 30px;
-      background: aqua;
-      border-radius: 10px;
-      font-weight: 500;
-      margin-right: 10px;
-    }
-
-    .btn-group a:nth-child(2) {
-      color: aqua;
-      background: transparent;
-      border: 2px solid aqua;
-    }
-
-    .btn-group a:hover {
-      color: white;
-      background: aqua;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 35px;
-      height: 35px;
-      background: aqua;
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      font-size: 1.2em;
-    }
-
-    .social-icons a:hover {
-      background-color: white;
-      color: aqua;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-
-<body>
-  <header class="d-flex justify-content-between align-items-center">
-    <h2 class="logo"><span>A</span>bout Me</h2>
-    <nav class="navigation d-flex">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contacts</a>
-    </nav>
-    <a href="#" class="btn-talk">Let's Talk</a>
-  </header>
-
-  <section class="home d-flex align-items-center">
-    <div class="content text-start">
-      <h2>I am a 1st year student at <span>St. Peter's College</span></h2>
-      <h4>Bachelor of Science in Information Technology (BSIT)</h4>
-      <p>
-        The Bachelor of Science in Information Technology (BSIT) is a three-year program that prepares students to be IT professionals well-versed in IT applications, including web, database, programming, and networking technologies.
-      </p>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary">Read More</a>
-        <a href="#" class="btn btn-outline-primary">See Projects</a>
+    <!-- About Section -->
+    <body>
+      <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+    <section id="about" class="py-5">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6">
+                  <h2>About Me</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id sagittis arcu. Curabitur a sem velit. Integer quis laoreet odio, a varius enim.</p>
+              </div>
+              <div class="col-lg-6">
+                  <img src="https://via.placeholder.com/300?text=Your+Photo" alt="Your Image" class="img-fluid rounded-circle">
+              </div>
+          </div>
       </div>
-      <div class="social-icons mt-4">
-        <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.facebook.com/YOUR_PROFILE" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-      </div>
-    </div>
   </section>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   <!-- Bootstrap JS & Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

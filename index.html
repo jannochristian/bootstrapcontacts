@@ -1,133 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="icon" href="logo.png" type="image/x-icon" />
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chua Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Calibri', sans-serif;
-        }
-
-        body {
-            background-color: #585858;
+        .home-section {
+            background: url('background.jpg') center/cover no-repeat;
+            height: 100vh;
             color: white;
-            background-image: url("background.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
-        header {
-            position: fixed;
+        .section-bg {
+            background-color: #f8f9fa;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item .overlay {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            padding: 20px 100px;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 2em;
-            color: white;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: var(--bs-info);
-        }
-
-        .home {
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: #fff;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 0 100px;
-            min-height: 100vh;
-            text-align: left;
-            margin-top: 80px;
+            border-radius: 15px;
         }
 
-        .content h2 {
-            font-size: 2.5em;
+        .portfolio-item:hover .overlay {
+            opacity: 1;
         }
 
-        .content h2 span {
-            color: var(--bs-info);
-        }
-
-        .content h4 {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .content p {
-            padding: 10px 0 20px;
-            font-size: 1.1em;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            width: 35px;
-            height: 35px;
-            background: var(--bs-info);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 35px;
+        .portfolio-item h5 {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
             color: white;
-            transition: .3s;
         }
 
-        .social-icons a:hover {
-            background: var(--bs-light);
-            color: var(--bs-info);
+        .btn-primary {
+            background-color: #0066cc;
+            border-color: #0066cc;
+        }
+
+        .btn-primary:hover {
+            background-color: #005bb5;
+            border-color: #005bb5;
+        }
+
+        .social-links i {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: #005bb5;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links i:hover {
+            transform: scale(1.2);
+            color: #0066cc;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 
 <body>
-    <header class="d-flex justify-content-between align-items-center px-5">
-        <h2 class="logo"><span>C</span>hua</h2>
-        <nav class="navigation d-flex">
-            <a href="index.html" class="text-white me-3">Home</a>
-            <a href="contact.html" class="text-white me-3">Contacts</a>
-            <a href="about.html" class="text-white me-3">About</a>
-        </nav>
-        <a href="#" class="btn btn-info text-white fw-bold">Let's Talk</a>
-    </header>
 
-    <section class="home">
-        <div class="content">
-            <h2>Hi, Welcome to my <span>Portfolio!</span></h2>
-            <h4>Are you ready to witness such creativity?</h4>
-            <p>Click the "See Projects" to view all my works.</p>
-            <div class="btn-group mt-3">
-                <a href="#" class="btn btn-info text-white">Click Here</a>
-                <a href="#" class="btn btn-outline-info">See Projects</a>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #333;">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <div class="social-icons mt-2">
-                <a href="https://www.facebook.com/jannochristiann" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jannochristian" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                <a href="mailto:jannochristian@gmail.com" target="_blank"><i class="fa-brands fa-google"></i></a>
+        </div>
+    </nav>
+
+    <section id="home" class="home-section text-center">
+        <div class="container">
+            <h1 class="display-4">Welcome to My Portfolio</h1>
+            <p class="lead">This is my newest work. If you have any feedback just click "Let's Connect" and contact me.</p>
+            <a href="#contact" class="btn btn-primary btn-lg">Let's Connect</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-5 section-bg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>About Me</h2>
+                    <p>Hello, I'm Janno Chua. 2nd year student of the course Bachelor of Science in Information Technology from St. Peter's College Iligan. 19 years of age, from Kiwalan, Iligan City.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="12345.PNG
+                    " alt="Your Image" class="img-fluid rounded-circle">
+                </div>
             </div>
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<section id="portfolio" class="py-5 section-bg">
+    <div class="container">
+        <h2 class="text-center">My Portfolio</h2>
+        <div class="row">
+            <div class="col-md-4 portfolio-item">
+                <div class="portfolio-image-container" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                    <img src="Computer Shop.PNG" alt="Project 1" class="img-fluid">
+                    <div class="overlay">
+                        <h5>Project 1 - Computer Shop</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 portfolio-item">
+                <div class="portfolio-image-container" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                    <img src="Forecast.PNG" alt="Project 2" class="img-fluid">
+                    <div class="overlay">
+                        <h5>Project 2 - Weather Forecast Update</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 portfolio-item">
+                <div class="portfolio-image-container" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                    <img src="https://via.placeholder.com/300?text=Project+3" alt="Project 3" class="img-fluid">
+                    <div class="overlay">
+                        <h5>Project 3</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel1">Project 1 - Computer Shop</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="computershop.html" width="100%" height="400" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel2">Project 2 - Weather Forecast Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="forecast.html" width="100%" height="400" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalLabel3">Project 3</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="project3.html" width="100%" height="400" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <section id="contact" class="py-5 section-bg">
+        <div class="container">
+            <h2 class="text-center">Contact Me</h2>
+            <form id="contact-form">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required />
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject:</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter subject" required />
+                </div>
+                <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <div id="spinner" class="spinner-border text-primary ml-2" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </form>
+        </div>
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          document
+            .getElementById("contact-form")
+            .addEventListener("submit", function (event) {
+              event.preventDefault();
+              document.getElementById("spinner").style.display = "inline-block";
+  
+              setTimeout(() => {
+                document.getElementById("spinner").style.display = "none";
+                alert("Form submitted successfully!");
+              }, 2000);
+            });
+        });
+      </script>
+
+    <footer class="text-center py-4" style="background-color: #333; color: white;">
+        <div class="container">
+            <p>Follow Me:</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/jannochristiann" target="_blank" class="text-dark"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/jannochristian" target="_blank" class="text-dark"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com/jannochristiann" target="_blank" class="text-dark"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>

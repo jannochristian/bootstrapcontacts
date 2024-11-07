@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weather Update</title>
+		<style>
+			body {
+				font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif,
+					sans-serif;
+				background-color: transparent;
+				color: #ffffff;
+				text-align: center;
+				background: url('gif.gif') no-repeat center center fixed;
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+			#weather {
+				margin-top: 20px;
+				padding: 20px;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				display: inline-block;
+				width: 80%;
+			}
+			.day {
+				display: inline-block;
+				width: 10%;
+				margin: 10px;
+				padding: 10px;
+				background-color: #83d8ff21;
+				border-radius: 5px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				text-align: center;
+			}
+			.day img {
+				width: 60px;
+				height: auto;
+			}
+			h1 {
+				color: rgb(0, 204, 255);
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Weather Forecast Update</h1>
+		<form>
+			<input type="text" id="city" placeholder="Enter city name" />
+			<button type="submit">Enter City</button>.
+		</form>
+		<div id="weather">
+			<p>Loading weather data...</p>
+		</div>
+		<script>
+			const apiKey = '76ba22c935ba4d5aa2460823242108';
+			const apiEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=`;
+
+			document.addEventListener('DOMContentLoaded', function () {
+				const form = document.querySelector('form');
+				form.addEventListener('submit', async function (event) {
+					event.preventDefault();
+					const cityName = document.getElementById('city').value.trim();
+					if (cityName) {
+						try {
+							const response = await fetch(`${apiEndpoint}${cityName}&days=7`);
+							const weatherData = await response.json();
+							console.log(weatherData);
+
+							const weatherContainer = document.getElementById('weather');
+							const currentData = weatherData.current;
+							const forecastDays = weatherData.forecast.forecastday;
+
+							weatherContainer.innerHTML = `
+                <h2>${cityName}</h2>
+                <p><strong>${cityName} Weather Forecast</p>
+                <p><strong>Weekly Weather Tracker</p>
+                <p><strong>Look at the sky every day and use the elements below to record the weather each day.</p>
+              `;
+
+							forecastDays.forEach((day) => {
+								const date = new Date(day.date).toLocaleDateString('en-US', {
+									weekday: 'long',
+								});
+								const temperatureInCelsius = day.day.avgtemp_c;
+								const weatherDescription = day.day.condition.text;
+								const iconUrl = day.day.condition.icon;
+
+								const dayDiv = document.createElement('div');
+								dayDiv.className = 'day';
+								dayDiv.innerHTML = `
+                  <h3>${date}</h3>
+                  <img src="https:${iconUrl}" alt="${weatherDescription}" />
+                  <p><strong>Temperature:</strong> ${temperatureInCelsius}°C</p>
+                  <p><strong>Weather:</strong> ${weatherDescription}</p>
+                  <p><strong>Humidity:</strong> ${day.day.avghumidity}%</p>
+                `;
+								weatherContainer.appendChild(dayDiv);
+							});
+						} catch (error) {
+							const weatherContainer = document.getElementById('weather');
+							weatherContainer.innerHTML = `<p>Unable to retrieve weather data: ${error.message}</p>`;
+						}
+					} else {
+						alert('Please enter a city name');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
