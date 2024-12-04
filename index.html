@@ -264,14 +264,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
           document
-            .getElementById("contact-form")
+            .getElementById("contact")
             .addEventListener("submit", function (event) {
               event.preventDefault();
               document.getElementById("spinner").style.display = "inline-block";
   
               setTimeout(() => {
                 document.getElementById("spinner").style.display = "none";
-                alert("Form submitted successfully!");
+                alert("Message successfully!");
               }, 2000);
             });
         });

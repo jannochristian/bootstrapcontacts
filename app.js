@@ -5,12 +5,12 @@
 
 // Function to send email using EmailJS
 document
-  .getElementById("contact-form")
+  .getElementById("contact")
   .addEventListener("submit", function (event) {
     event.preventDefault();
     // Send the email using the form data
 
-    emailjs.sendForm("service_ibz02cj", "template_foqrjst", this).then(
+    emailjs.sendForm("service_ibz02cj", "template_a3nyd3q", this).then(
       function () {
         alert("Message Sent Successfully!");
       },
